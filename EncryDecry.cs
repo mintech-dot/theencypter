@@ -11,16 +11,18 @@ using System.Windows.Forms;
 
 namespace EncryptionDecryption
 {
-    public partial class Form1 : MetroFramework.Forms.MetroForm
+    public partial class EncryDecry : MetroFramework.Forms.MetroForm
     {
         public Form1()
         {
             InitializeComponent();
         }
-
-        string hash = "M[%&e(@";
+        // string hash should not be null
+        string hash = "";
+        //Encryption function
         private void Encrypt_Click(object sender, EventArgs e)
         {
+        try{
             byte[] data = UTF8Encoding.UTF8.GetBytes(valuetxt.Text);
             using(MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider() )
             {
@@ -32,10 +34,18 @@ namespace EncryptionDecryption
                     encrypttxt.Text = Convert.ToBase64String(result, 0, result.Length);
                 }
             }
-        }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Values should not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+        }
+        
+        //Decryption function
         private void Decrypt_Click(object sender, EventArgs e)
         {
+        try{
             byte[] data = Convert.FromBase64String(encrypttxt.Text);
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
@@ -47,6 +57,13 @@ namespace EncryptionDecryption
                     decrypttxt.Text = UTF8Encoding.UTF8.GetString(result);
                 }
             }
+            }
+            catch
+            {
+                    MessageBox.Show("Values should not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+                    
         }
 
         private void aboutinfo_Click(object sender, EventArgs e)
