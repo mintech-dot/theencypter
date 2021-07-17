@@ -3,7 +3,7 @@
 </div>
 
 
-# PcInfo
+# The Encrypter
 
 The Encrypter is a free, open-source project for Encrypt and Decrypt a String.
 
