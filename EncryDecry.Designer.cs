@@ -1,6 +1,6 @@
 ﻿namespace EncryptionDecryption
 {
-    partial class Form1
+    partial class EncryDecry
     {
         /// <summary>
         /// Required designer variable.
